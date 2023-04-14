@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cucumber-js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ecossior/edmundo-trello#readme",
   "devDependencies": {
     "@cucumber/cucumber": "^9.1.0",
+    "@types/chai": "^4.3.4",
     "chai": "^4.3.7",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"

@@ -1,17 +1,17 @@
 import { ElementActions } from "../../core/element-actions";
 import { BasePage } from "../base.page";
 
-class VerticalMenuPage extends BasePage {
+export class VerticalMenuPage extends BasePage {
         
-    private boardName = (name: string) => `//a[@title="${name} (currently active)"]`;
+    private boardName = (name: string) => `//nav[@data-testid='workspace-navigation-nav']/descendant::a[contains(.,"${name}")]`;
     
     constructor() {
         super();
     }
 
-    async getBoardInformation(projName: string) {        
-        const isVisible = await ElementActions.isElementVisible(this.boardName(projName));
-        const boardText = await ElementActions.getElementText(this.boardName(projName));
+    async getBoardInformation(value: string) {        
+        const isVisible = await ElementActions.isElementVisible(this.boardName(value));
+        const boardText = await ElementActions.getElementText(this.boardName(value));
         return [isVisible, boardText];
     }
 }
