@@ -6,3 +6,4 @@ export const TESTDATA = {
     apiUrl: '',
     apiToken: '',
 }
+

@@ -3,8 +3,8 @@ import { BasePage } from "../base.page";
 
 export class CreateMenuPage extends BasePage {        
     
-    private selectTypeBtn= (item:string)=> `//span[.="${item}"]`;// : string = "//span[.='Create board']";    
-    private backgroundHamburgerIcon : string = "//li[6]/button[@class='bxgKMAm3lq5BpA SEj5vUdI3VvxDc']"; //'//div[@id="background-picker"]//span[@aria-label="OverflowMenuHorizontalIcon"]';
+    private selectTypeBtn= (item:string)=> `//span[.="${item}"]`;
+    private backgroundHamburgerIcon : string = "//li[6]/button[@class='bxgKMAm3lq5BpA SEj5vUdI3VvxDc']";
     private colorsSeeMoreBtn     : string = "//h1[.='Colors']/following::button";        
     private selectColorBackgroundBtn= (name: string) => `//div[@title="${name}"]`;
     private boardTitleTxt: string = '//input[@data-testid="create-board-title-input"]';
@@ -54,14 +54,3 @@ export class CreateMenuPage extends BasePage {
         await ElementActions.click(this.createBtn);
     }        
 }
-
-//export const createMenuPage = new CreateMenuPage();
-
-/**
- * async getProjectNameInformation(projName: string) {
-        const projetNameLocator = this.projectName(projName);
-        const isVisible = await ElementActions.isElementVisible(projetNameLocator);
-        const projectText = await ElementActions.getElementText(projetNameLocator);        
-        return [isVisible, projectText];
-    }
- */

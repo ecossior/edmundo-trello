@@ -5,7 +5,7 @@ import { StartTemplateMenuPage } from "./template-menu.page";
 import { WorkspaceMenuPage } from "./workspace-menu.page";
 
 class HeaderPage extends BasePage {   
-    private create: CreateMenuPage;
+    private createBoard: CreateMenuPage;
     private startWithTemplate: StartTemplateMenuPage;
     private workspace: WorkspaceMenuPage;
     private trelloLbl: string = "a[aria-label='Back to home']";
@@ -13,13 +13,13 @@ class HeaderPage extends BasePage {
 
     constructor(){
         super();
-        this.create = new CreateMenuPage();
+        this.createBoard = new CreateMenuPage();
         this.startWithTemplate = new StartTemplateMenuPage();
         this.workspace = new WorkspaceMenuPage();
     }
 
-    public get getCreate() {
-        return this.create;
+    public get getCreateBoard() {
+        return this.createBoard;
     }
 
     public get getStartWithTemplate() {

@@ -1,8 +1,5 @@
 import { DataTable, Given, setDefaultTimeout, Then, When, World,  } from "@cucumber/cucumber";
-import { TESTDATA } from "../../config.app";
-import { loginPage } from "../../src/pages/login.page";
 import { headerPage } from "../../src/pages/components/header.page";
-import { verticalMenu } from "../../src/pages/components/vertical-menu.page";
 import { expect } from "chai";
 import { CustomWorld } from "../../cucumber.config";
 
@@ -26,5 +23,3 @@ Given(/sends an invite to workspace members: "(.*)"/, async function (this:Custo
   await headerPage.getWorkspace.selectMembers(name);
   await headerPage.getWorkspace.clickinviteToWorkspace();   
 });
-
-

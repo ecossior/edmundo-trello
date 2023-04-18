@@ -2,10 +2,8 @@ import { ElementActions } from "../core/element-actions";
 import { BasePage } from "./base.page";
 
 class BoardPage extends BasePage {
-    
-    private toDoLbl: string = '//textarea[.="To Do"]';
-    private doingLbl: string = '//textarea[.="Doing"]';
-    private doneLbl: string = '//textarea[.="Done"]';
+     
+    private headerLbl= (title:string)=> `//textarea[.="${title}"]`;
     private addCardForToDo: string = '//div[@id="board"]/div[1]//span[@class="icon-sm icon-add"]';
     private addCardForDoing: string = '//div[@id="board"]/div[2]//span[@class="icon-sm icon-add"]';
     private addCardForDone: string = '//div[@id="board"]/div[3]//span[@class="icon-sm icon-add"]'; 
@@ -19,24 +17,10 @@ class BoardPage extends BasePage {
         super();
     }
 
-    async getTodoInformation() {        
-        const isVisible = await ElementActions.isElementVisible(this.toDoLbl);
-        const toDoText = await ElementActions.getElementText(this.toDoLbl);        
-        return [isVisible, toDoText];
+    async isTitleVisibleInBoard(title:string) {        
+        return await ElementActions.isElementVisible(this.headerLbl(title));        
     }
-
-    async getDoingInformation() {
-        const isVisible = await ElementActions.isElementVisible(this.doingLbl);
-        const doingText = await ElementActions.getElementText(this.doingLbl);
-        return [isVisible, doingText];
-    }
-
-    async getDoneInformation() {        
-        const isVisible = await ElementActions.isElementVisible(this.doneLbl);
-        const doneText = await ElementActions.getElementText(this.doneLbl);        
-        return [isVisible, doneText];
-    }
-
+    
     async newTodo(name: string) {
         await ElementActions.click(this.addCardForToDo);
         await ElementActions.setText(this.cardTitleTxt, name);        

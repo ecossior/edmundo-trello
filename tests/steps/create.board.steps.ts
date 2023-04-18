@@ -1,12 +1,8 @@
-import { DataTable, Given, setDefaultTimeout, Then, When, World,  } from "@cucumber/cucumber";
-import { TESTDATA } from "../../config.app";
-import { loginPage } from "../../src/pages/login.page";
+import { Given, setDefaultTimeout, Then, When } from "@cucumber/cucumber";
 import { headerPage } from "../../src/pages/components/header.page";
 import { verticalMenu } from "../../src/pages/components/vertical-menu.page";
 import { expect } from "chai";
 import { CustomWorld } from "../../cucumber.config";
-
-
 
 setDefaultTimeout(60 * 1000);
 
@@ -15,18 +11,17 @@ Given('the user clicks Create from Header menu', async function () {
 });
 
 When(/the user selects "(.*)" from Create menu/, async function (item: string) {    
-  await headerPage.getCreate.clickSelectType(item);  
+  await headerPage.getCreateBoard.clickSelectType(item);  
 });
-
  
 Given(/selects the Background "(.*)"/, async function (name : string) {  
-  await headerPage.getCreate.clickBackgroundHamburgerIcon();
-  await headerPage.getCreate.clickColorsSeeMore();
-  await headerPage.getCreate.clickSelectColorBackground(name); 
+  await headerPage.getCreateBoard.clickBackgroundHamburgerIcon();
+  await headerPage.getCreateBoard.clickColorsSeeMore();
+  await headerPage.getCreateBoard.clickSelectColorBackground(name); 
 });
 
 Given(/add the board title "(.*)"/, async function (this:CustomWorld, name :string) {
-  await headerPage.getCreate.setBoardTitle(name);
+  await headerPage.getCreateBoard.setBoardTitle(name);
   this.name = name;
 });
 
@@ -36,14 +31,14 @@ Given(/selects a "(.*)" of Template List/, async function (this:CustomWorld, nam
 });
 
 Given(/modify the visibility from Workspace to (.*)/, async function (string) {
-  await headerPage.getCreate.clickVisibilityCbo();
-  await headerPage.getCreate.clickPublicOption();
-  await headerPage.getCreate.clickMakeBoardPublicBtn();
+  await headerPage.getCreateBoard.clickVisibilityCbo();
+  await headerPage.getCreateBoard.clickPublicOption();
+  await headerPage.getCreateBoard.clickMakeBoardPublicBtn();
 
 });
 
 Given(/accept all settings/, async function () {
-  await headerPage.getCreate.clickCreateBtn();
+  await headerPage.getCreateBoard.clickCreateBtn();
 });
 
 Then('the user should see to created board in the list', async function (this:CustomWorld) {  
