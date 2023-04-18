@@ -71,6 +71,10 @@ export class Driver {
         }
         return browsers[browserName];
     }
+
+    async takeScreenshot(){
+        return await driverInstance.Page.screenshot();
+    }
 }
 
 export const driverInstance =  Driver.getInstance();
